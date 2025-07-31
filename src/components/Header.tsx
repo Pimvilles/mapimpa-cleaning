@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Mail } from "lucide-react";
+import { FaTiktok, FaInstagram } from "react-icons/fa";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,9 +20,11 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">M</span>
-            </div>
+            <img 
+              src="/lovable-uploads/bc07171a-9fe9-423c-8061-9db7ed6b748b.png" 
+              alt="Mapimpa Logo" 
+              className="w-10 h-10 rounded-lg"
+            />
             <div>
               <h1 className="text-xl font-bold text-foreground">Mapimpa</h1>
               <p className="text-xs text-muted-foreground">Cleaning Division</p>
@@ -56,11 +59,19 @@ const Header = () => {
             </button>
           </nav>
 
-          {/* Contact Info & CTA */}
+          {/* Contact Info & Social Media */}
           <div className="hidden lg:flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-sm">
               <Phone className="w-4 h-4 text-primary" />
               <span className="text-foreground">+27 67 805 5830</span>
+            </div>
+            <div className="flex items-center space-x-3">
+              <a href="https://www.tiktok.com/@mapimpa_cleaning" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
+                <FaTiktok className="w-5 h-5" />
+              </a>
+              <a href="https://www.instagram.com/mapimpa_cleaning" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
+                <FaInstagram className="w-5 h-5" />
+              </a>
             </div>
             <Button 
               onClick={() => scrollToSection('contact')}

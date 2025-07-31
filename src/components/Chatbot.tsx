@@ -150,8 +150,12 @@ const Chatbot = () => {
           <CardHeader className="bg-primary text-primary-foreground p-4 rounded-t-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <Bot className="w-5 h-5" />
-                <CardTitle className="text-lg">Mapimpa Assistant</CardTitle>
+                <img 
+                  src="/lovable-uploads/bc07171a-9fe9-423c-8061-9db7ed6b748b.png" 
+                  alt="Mapimpa Logo" 
+                  className="w-6 h-6 rounded"
+                />
+                <CardTitle className="text-lg">Tebatso A.I Assistant</CardTitle>
               </div>
               <Button
                 onClick={() => setIsOpen(false)}

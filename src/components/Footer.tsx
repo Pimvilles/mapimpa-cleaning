@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin } from "lucide-react";
+import { FaTiktok, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -17,9 +18,11 @@ const Footer = () => {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center">
-                <span className="text-secondary-foreground font-bold text-lg">M</span>
-              </div>
+              <img 
+                src="/lovable-uploads/bc07171a-9fe9-423c-8061-9db7ed6b748b.png" 
+                alt="Mapimpa Logo" 
+                className="w-10 h-10 rounded-lg"
+              />
               <div>
                 <h3 className="text-xl font-bold">Mapimpa Cleaning Division</h3>
                 <p className="text-primary-foreground/80 text-sm">Professional Cleaning Solutions</p>
@@ -73,7 +76,10 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
-                <Phone className="w-5 h-5 mt-0.5 text-secondary" />
+                <div className="flex items-center space-x-1">
+                  <Phone className="w-5 h-5 mt-0.5 text-secondary" />
+                  <FaWhatsapp className="w-4 h-4 mt-0.5 text-green-500" />
+                </div>
                 <div>
                   <p className="text-primary-foreground/80 text-sm">+27 67 805 5830</p>
                   <p className="text-primary-foreground/80 text-sm">+27 83 595 0616</p>
@@ -84,7 +90,10 @@ const Footer = () => {
                 <p className="text-primary-foreground/80 text-sm">info@mapimpagroup.co.za</p>
               </div>
               <div className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5 text-secondary" />
+                <div className="flex items-center space-x-2">
+                  <FaTiktok className="w-5 h-5 text-secondary" />
+                  <FaInstagram className="w-5 h-5 text-secondary" />
+                </div>
                 <p className="text-primary-foreground/80 text-sm">@mapimpa_cleaning</p>
               </div>
             </div>
@@ -94,9 +103,14 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-primary-foreground/20 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-primary-foreground/80 text-sm">
-              © {currentYear} Mapimpa Cleaning Division. All rights reserved.
-            </p>
+            <div className="text-center md:text-left">
+              <p className="text-primary-foreground/80 text-sm">
+                © {currentYear} Mapimpa Cleaning Division. All rights reserved.
+              </p>
+              <p className="text-primary-foreground/60 text-xs mt-1">
+                Powered By: <a href="https://www.kwenamai.co.za" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-secondary/80 underline">Kwena Moloto A.I Solutions</a>
+              </p>
+            </div>
             <div className="flex items-center space-x-6 text-sm text-primary-foreground/80">
               <span>Licensed & Insured</span>
               <span>•</span>

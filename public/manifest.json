@@ -1,0 +1,27 @@
+{
+  "name": "Mapimpa Cleaning Division",
+  "short_name": "Mapimpa",
+  "description": "Professional cleaning services including carpet cleaning, upholstery, pest control, and commercial cleaning.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#DC2626",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/lovable-uploads/bc07171a-9fe9-423c-8061-9db7ed6b748b.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/lovable-uploads/bc07171a-9fe9-423c-8061-9db7ed6b748b.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "lifestyle"],
+  "scope": "/",
+  "lang": "en"
+}

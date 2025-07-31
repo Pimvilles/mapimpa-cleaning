@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -75,7 +76,10 @@ const Contact = () => {
               <Card className="border-border">
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-3">
-                    <Phone className="w-5 h-5 text-primary" />
+                    <div className="flex items-center space-x-1">
+                      <Phone className="w-5 h-5 text-primary" />
+                      <FaWhatsapp className="w-4 h-4 text-green-500" />
+                    </div>
                     <span>Phone Numbers</span>
                   </CardTitle>
                 </CardHeader>

@@ -91,8 +91,12 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <div className="flex items-center space-x-2">
-                  <FaTiktok className="w-5 h-5 text-secondary" />
-                  <FaInstagram className="w-5 h-5 text-secondary" />
+                  <a href="https://www.tiktok.com/@mapimpa_cleaning?_t=ZS-8yVX7QC6SnZ&_r=1" target="_blank" rel="noopener noreferrer">
+                    <FaTiktok className="w-5 h-5 text-secondary hover:text-secondary/80" />
+                  </a>
+                  <a href="https://www.instagram.com/reel/DMvYoDHIc_S/?igsh=eDIxNTFmM2hhZGFz" target="_blank" rel="noopener noreferrer">
+                    <FaInstagram className="w-5 h-5 text-secondary hover:text-secondary/80" />
+                  </a>
                 </div>
                 <p className="text-primary-foreground/80 text-sm">@mapimpa_cleaning</p>
               </div>

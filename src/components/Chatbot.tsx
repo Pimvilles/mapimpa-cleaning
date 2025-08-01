@@ -146,7 +146,7 @@ const Chatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 w-80 sm:w-96 h-[450px] sm:h-[500px] max-w-[calc(100vw-3rem)] shadow-2xl z-50 flex flex-col border-primary/20">
+        <Card className="fixed bottom-6 right-6 w-72 sm:w-80 h-[400px] sm:h-[450px] max-w-[calc(100vw-3rem)] shadow-2xl z-50 flex flex-col border-primary/20">
           <CardHeader className="bg-primary text-primary-foreground p-4 rounded-t-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">

@@ -1,8 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
+import { useState, useEffect } from "react";
 import heroImage from "@/assets/hero-cleaning.jpg";
 
 const Hero = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const heroImages = [
+    heroImage,
+    "/lovable-uploads/a4d65858-22fa-4986-97dd-04754befaf3f.png",
+    "/lovable-uploads/f1d2ccda-155d-49d6-b8ac-28663e114f95.png", 
+    "/lovable-uploads/6435c466-9fc7-4c41-a3b6-b89886adfaab.png"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     if (element) {
@@ -19,13 +36,18 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-[90vh] flex items-center">
-      {/* Background Image */}
+      {/* Background Slideshow */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={heroImage} 
-          alt="Professional cleaning staff at work" 
-          className="w-full h-full object-cover"
-        />
+        {heroImages.map((image, index) => (
+          <img 
+            key={index}
+            src={image} 
+            alt={`Professional cleaning service ${index + 1}`} 
+            className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        ))}
         <div className="absolute inset-0 hero-gradient"></div>
       </div>
 

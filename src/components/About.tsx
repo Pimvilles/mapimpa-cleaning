@@ -30,7 +30,7 @@ const About = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div>
+          <div className="text-center lg:text-left">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               About Mapimpa 
               <span className="text-primary block">Cleaning Division</span>

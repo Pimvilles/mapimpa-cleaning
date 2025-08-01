@@ -72,10 +72,10 @@ const Header = () => {
               <span className="text-foreground">+27 67 805 5830</span>
             </div>
             <div className="flex items-center space-x-3">
-              <a href="https://www.tiktok.com/@mapimpa_cleaning" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
+              <a href="https://www.tiktok.com/@mapimpa_cleaning?_t=ZS-8yVX7QC6SnZ&_r=1" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
                 <FaTiktok className="w-5 h-5" />
               </a>
-              <a href="https://www.instagram.com/mapimpa_cleaning" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
+              <a href="https://www.instagram.com/reel/DMvYoDHIc_S/?igsh=eDIxNTFmM2hhZGFz" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
                 <FaInstagram className="w-5 h-5" />
               </a>
             </div>

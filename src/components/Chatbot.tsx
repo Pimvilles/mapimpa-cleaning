@@ -17,7 +17,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hello! I'm here to help answer any questions about Mapimpa Cleaning Division. How can I assist you today?",
+      text: "Hello! I'm Tebatso A.I, im here to help answer any questions about Mapimpa Cleaning Division. How can I assist you today?",
       sender: 'bot',
       timestamp: new Date()
     }
@@ -146,7 +146,7 @@ const Chatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 w-96 h-[500px] shadow-2xl z-50 flex flex-col border-primary/20">
+        <Card className="fixed bottom-6 right-6 w-80 sm:w-96 h-[450px] sm:h-[500px] max-w-[calc(100vw-3rem)] shadow-2xl z-50 flex flex-col border-primary/20">
           <CardHeader className="bg-primary text-primary-foreground p-4 rounded-t-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
@@ -155,7 +155,7 @@ const Chatbot = () => {
                   alt="Mapimpa Logo" 
                   className="w-6 h-6 rounded"
                 />
-                <CardTitle className="text-lg">Tebatso A.I Assistant</CardTitle>
+                <CardTitle className="text-lg">Mapimpa Cleaning A.I Assistant</CardTitle>
               </div>
               <Button
                 onClick={() => setIsOpen(false)}

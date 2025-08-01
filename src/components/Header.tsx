@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Mail } from "lucide-react";
-import { FaTiktok, FaInstagram } from "react-icons/fa";
+import { FaTiktok, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,6 +50,12 @@ const Header = () => {
               className="text-foreground hover:text-primary transition-colors"
             >
               Services
+            </button>
+            <button 
+              onClick={() => scrollToSection('sales')}
+              className="text-foreground hover:text-primary transition-colors"
+            >
+              Sales
             </button>
             <button 
               onClick={() => scrollToSection('gallery')}
@@ -123,6 +129,12 @@ const Header = () => {
                 Services
               </button>
               <button 
+                onClick={() => scrollToSection('sales')}
+                className="text-left text-foreground hover:text-primary transition-colors"
+              >
+                Sales
+              </button>
+              <button 
                 onClick={() => scrollToSection('gallery')}
                 className="text-left text-foreground hover:text-primary transition-colors"
               >
@@ -136,8 +148,20 @@ const Header = () => {
               </button>
               <div className="pt-4 border-t border-border">
                 <div className="flex items-center space-x-2 text-sm mb-3">
-                  <Phone className="w-4 h-4 text-primary" />
+                  <div className="flex items-center space-x-1">
+                    <Phone className="w-4 h-4 text-primary" />
+                    <FaWhatsapp className="w-4 h-4 text-green-500" />
+                  </div>
                   <span className="text-foreground">+27 67 805 5830</span>
+                </div>
+                <div className="flex items-center space-x-3 mb-3">
+                  <a href="https://www.tiktok.com/@mapimpa_cleaning?_t=ZS-8yVX7QC6SnZ&_r=1" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
+                    <FaTiktok className="w-5 h-5" />
+                  </a>
+                  <a href="https://www.instagram.com/reel/DMvYoDHIc_S/?igsh=eDIxNTFmM2hhZGFz" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
+                    <FaInstagram className="w-5 h-5" />
+                  </a>
+                  <span className="text-foreground text-sm">@mapimpa_cleaning</span>
                 </div>
                 <Button 
                   onClick={() => scrollToSection('contact')}

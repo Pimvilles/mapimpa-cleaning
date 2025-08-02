@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -30,9 +31,14 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const { data, error } = await supabase.functions.invoke('send-quote-request', {
+        body: formData
+      });
+
+      if (error) {
+        throw error;
+      }
       
       toast({
         title: "Message Sent Successfully!",
@@ -46,6 +52,7 @@ const Contact = () => {
         message: "",
       });
     } catch (error) {
+      console.error('Error sending quote request:', error);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",

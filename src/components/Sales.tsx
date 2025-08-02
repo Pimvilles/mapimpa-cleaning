@@ -1,7 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone } from "lucide-react";
+import { Phone, ChevronLeft, ChevronRight } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useRef } from "react";
 
 const Sales = () => {
   const products = [
@@ -52,6 +53,20 @@ const Sales = () => {
     }
   ];
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -320, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 320, behavior: 'smooth' });
+    }
+  };
+
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     if (element) {
@@ -72,8 +87,30 @@ const Sales = () => {
           </p>
         </div>
 
-        <ScrollArea className="w-full">
-          <div className="flex space-x-6 pb-4">
+        <div className="relative">
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
+            onClick={scrollLeft}
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </Button>
+          
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
+            onClick={scrollRight}
+          >
+            <ChevronRight className="w-4 h-4" />
+          </Button>
+
+          <div 
+            ref={scrollRef}
+            className="flex space-x-6 pb-4 overflow-x-auto scrollbar-hide px-12"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {products.map((product, index) => (
               <Card key={index} className="flex-shrink-0 w-80 border-border hover:border-primary/20 transition-colors">
                 <CardHeader className="text-center pb-4">
@@ -89,25 +126,14 @@ const Sales = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-muted-foreground text-center mb-4">
+                  <CardDescription className="text-muted-foreground text-center">
                     {product.description}
                   </CardDescription>
-                  <div className="text-center">
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      onClick={scrollToContact}
-                      className="w-full"
-                    >
-                      <Phone className="w-4 h-4 mr-2" />
-                      Call for Pricing
-                    </Button>
-                  </div>
                 </CardContent>
               </Card>
             ))}
           </div>
-        </ScrollArea>
+        </div>
 
         <div className="text-center mt-12">
           <div className="bg-muted/50 rounded-lg p-6 max-w-2xl mx-auto">

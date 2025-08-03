@@ -1,32 +1,24 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, Clock, Users, ThumbsUp } from "lucide-react";
-
 const About = () => {
-  const stats = [
-    {
-      icon: Users,
-      number: "500+",
-      label: "Happy Clients",
-    },
-    {
-      icon: Clock,
-      number: "5+",
-      label: "Years Experience",
-    },
-    {
-      icon: Award,
-      number: "24/7",
-      label: "Service Available",
-    },
-    {
-      icon: ThumbsUp,
-      number: "100%",
-      label: "Satisfaction Rate",
-    },
-  ];
-
-  return (
-    <section id="about" className="py-20 bg-background">
+  const stats = [{
+    icon: Users,
+    number: "500+",
+    label: "Happy Clients"
+  }, {
+    icon: Clock,
+    number: "5+",
+    label: "Years Experience"
+  }, {
+    icon: Award,
+    number: "24/7",
+    label: "Service Available"
+  }, {
+    icon: ThumbsUp,
+    number: "100%",
+    label: "Satisfaction Rate"
+  }];
+  return <section id="about" className="bg-background rounded-none py-[29px]">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
@@ -83,9 +75,8 @@ const About = () => {
           <div>
             <div className="grid grid-cols-2 gap-6">
               {stats.map((stat, index) => {
-                const IconComponent = stat.icon;
-                return (
-                  <Card key={index} className="text-center p-6 border-border">
+              const IconComponent = stat.icon;
+              return <Card key={index} className="text-center p-6 border-border">
                     <CardContent className="p-0">
                       <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                         <IconComponent className="w-8 h-8 text-primary" />
@@ -97,15 +88,12 @@ const About = () => {
                         {stat.label}
                       </div>
                     </CardContent>
-                  </Card>
-                );
-              })}
+                  </Card>;
+            })}
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;

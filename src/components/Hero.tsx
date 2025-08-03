@@ -53,8 +53,8 @@ const Hero = () => {
 
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl">
-          <div className="flex items-center space-x-2 mb-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="flex items-center justify-center space-x-2 mb-6">
             <div className="flex items-center space-x-1">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-5 h-5 fill-secondary text-secondary" />
@@ -73,7 +73,7 @@ const Hero = () => {
             Experience the difference of expert cleaning services.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center">
             <Button 
               size="lg" 
               onClick={scrollToContact}
@@ -94,15 +94,15 @@ const Hero = () => {
 
           {/* Key Features */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="text-center sm:text-left">
+            <div className="text-center">
               <div className="text-3xl font-bold text-secondary mb-2">24/7</div>
               <div className="text-primary-foreground">Emergency Service</div>
             </div>
-            <div className="text-center sm:text-left">
+            <div className="text-center">
               <div className="text-3xl font-bold text-secondary mb-2">100%</div>
               <div className="text-primary-foreground">Satisfaction Guaranteed</div>
             </div>
-            <div className="text-center sm:text-left">
+            <div className="text-center">
               <div className="text-3xl font-bold text-secondary mb-2">5+</div>
               <div className="text-primary-foreground">Years Experience</div>
             </div>

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { X, ZoomIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ThreeDPhotoCarousel } from "@/components/ui/3d-carousel";
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const galleryImages = [{
@@ -71,13 +70,6 @@ const Gallery = () => {
             See the exceptional results of our professional cleaning services. 
             From residential homes to commercial spaces, we deliver outstanding quality every time.
           </p>
-        </div>
-
-        
-        {/* 3D Carousel */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-semibold text-foreground mb-6 text-center">Interactive 3D Gallery</h3>
-          <ThreeDPhotoCarousel />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

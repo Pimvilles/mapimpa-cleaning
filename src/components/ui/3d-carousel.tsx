@@ -58,21 +58,57 @@ export function useMediaQuery(
   return matches
 }
 
-const keywords = [
-  "night",
-  "city",
-  "sky",
-  "sunset",
-  "sunrise",
-  "winter",
-  "skyscraper",
-  "building",
-  "cityscape",
-  "architecture",
-  "street",
-  "lights",
-  "downtown",
-  "bridge",
+const galleryImages = [
+  {
+    src: "/lovable-uploads/882be319-ec7d-447b-835b-d1668728b5cc.png",
+    alt: "Scene Clean-up Service - Professional biohazard cleaning",
+    category: "Scene Clean-up"
+  },
+  {
+    src: "/lovable-uploads/46366808-5631-475a-98f3-274e2c6a7f8f.png",
+    alt: "Tiles and Hard Floor Polishing - After cleaning result",
+    category: "Floor Polishing"
+  },
+  {
+    src: "/lovable-uploads/59768259-1ebc-4371-af71-a7129c9dd83f.png",
+    alt: "Deep Cleaning Services - Professional floor cleaning",
+    category: "Deep Cleaning"
+  },
+  {
+    src: "/lovable-uploads/063d916d-8635-4138-80b4-fcf70ccae32d.png",
+    alt: "Industrial Cleaning - Solar panel cleaning equipment",
+    category: "Industrial Cleaning"
+  },
+  {
+    src: "/lovable-uploads/3ba8a3a4-58e1-4676-87b1-5dfeea331275.png",
+    alt: "Solar Panel Cleaning - Professional maintenance service",
+    category: "Solar Panel Cleaning"
+  },
+  {
+    src: "/lovable-uploads/0253280b-3638-45a1-8858-5619a24806c8.png",
+    alt: "Upholstery Cleaning - Professional furniture cleaning",
+    category: "Upholstery Cleaning"
+  },
+  {
+    src: "/lovable-uploads/b1b1a4eb-b7c3-4d03-b137-b7b4d9d7a7ba.png",
+    alt: "Carpet Cleaning - Professional carpet cleaning service",
+    category: "Carpet Cleaning"
+  },
+  {
+    src: "/lovable-uploads/325b41e2-75bb-4501-9011-c126b7038697.png",
+    alt: "Couch Cleaning - Professional furniture cleaning",
+    category: "Furniture Cleaning"
+  },
+  {
+    src: "/lovable-uploads/a27354cd-d4c6-409f-9ae2-5738675a5cb8.png",
+    alt: "Mattress Cleaning - Professional sanitization service",
+    category: "Mattress Cleaning"
+  },
+  {
+    src: "/lovable-uploads/cb4a0c89-2bc0-45cb-b264-e7ac4cf47109.png",
+    alt: "Window Cleaning - Professional window cleaning service",
+    category: "Window Cleaning"
+  }
 ]
 
 const duration = 0.15
@@ -88,7 +124,7 @@ const Carousel = memo(
   }: {
     handleClick: (imgUrl: string, index: number) => void
     controls: any
-    cards: string[]
+    cards: { src: string; alt: string; category: string }[]
     isCarouselActive: boolean
   }) => {
     const isScreenSizeSm = useMediaQuery("(max-width: 640px)")
@@ -138,9 +174,9 @@ const Carousel = memo(
           }
           animate={controls}
         >
-          {cards.map((imgUrl, i) => (
+          {cards.map((image, i) => (
             <motion.div
-              key={`key-${imgUrl}-${i}`}
+              key={`key-${image.src}-${i}`}
               className="absolute flex h-full origin-center items-center justify-center rounded-xl bg-background p-2"
               style={{
                 width: `${faceWidth}px`,
@@ -148,13 +184,13 @@ const Carousel = memo(
                   i * (360 / faceCount)
                 }deg) translateZ(${radius}px)`,
               }}
-              onClick={() => handleClick(imgUrl, i)}
+              onClick={() => handleClick(image.src, i)}
             >
               <motion.img
-                src={imgUrl}
-                alt={`keyword_${i} ${imgUrl}`}
-                layoutId={`img-${imgUrl}`}
-                className="pointer-events-none  w-full rounded-xl object-cover aspect-square"
+                src={image.src}
+                alt={image.alt}
+                layoutId={`img-${image.src}`}
+                className="pointer-events-none w-full rounded-xl object-cover aspect-square"
                 initial={{ filter: "blur(4px)" }}
                 layout="position"
                 animate={{ filter: "blur(0px)" }}
@@ -175,10 +211,7 @@ function ThreeDPhotoCarousel() {
   const [activeImg, setActiveImg] = useState<string | null>(null)
   const [isCarouselActive, setIsCarouselActive] = useState(true)
   const controls = useAnimation()
-  const cards = useMemo(
-    () => keywords.map((keyword) => `https://picsum.photos/200/300?${keyword}`),
-    []
-  )
+  const cards = useMemo(() => galleryImages, [])
 
   useEffect(() => {
     console.log("Cards loaded:", cards)

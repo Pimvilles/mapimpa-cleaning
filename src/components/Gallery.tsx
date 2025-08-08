@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { X, ZoomIn } from "lucide-react";
+import { useState, useRef } from "react";
+import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const galleryImages = [{
@@ -53,49 +54,128 @@ const Gallery = () => {
     src: "/lovable-uploads/cb4a0c89-2bc0-45cb-b264-e7ac4cf47109.png",
     alt: "Window Cleaning - Professional window cleaning service",
     category: "Window Cleaning"
+  }, {
+    id: 11,
+    src: "/lovable-uploads/e18f49f9-e7ed-4acd-822e-70a5bdbc31f9.png",
+    alt: "Professional Carpet Cleaning Team - Equipment demonstration",
+    category: "Team Services"
+  }, {
+    id: 12,
+    src: "/lovable-uploads/fcf154d8-fcb5-4647-9800-19050a274217.png",
+    alt: "Carpet Deep Cleaning - Floor polishing machine in action",
+    category: "Deep Cleaning"
+  }, {
+    id: 13,
+    src: "/lovable-uploads/cc8eb21a-4df0-4e79-a19f-ababb3c8774f.png",
+    alt: "Professional Carpet Cleaning - Steam cleaning service",
+    category: "Carpet Cleaning"
+  }, {
+    id: 14,
+    src: "/lovable-uploads/538b04d2-acb2-4353-a3b2-be33fe5fef2e.png",
+    alt: "Area Rug Cleaning - Professional cleaning service",
+    category: "Rug Cleaning"
+  }, {
+    id: 15,
+    src: "/lovable-uploads/d151264b-3de7-487f-af18-dc77fdfcc8b3.png",
+    alt: "Cleaning Team Equipment - Professional service setup",
+    category: "Professional Equipment"
+  }, {
+    id: 16,
+    src: "/lovable-uploads/f9659abb-22a6-4a0f-bd7d-bc008e27427b.png",
+    alt: "Carpet Extraction Cleaning - Steam cleaning in progress",
+    category: "Steam Cleaning"
   }];
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: -320,
+        behavior: 'smooth'
+      });
+    }
+  };
+  
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: 320,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const openModal = (imageSrc: string) => {
     setSelectedImage(imageSrc);
     document.body.style.overflow = 'hidden';
   };
+  
   const closeModal = () => {
     setSelectedImage(null);
     document.body.style.overflow = 'unset';
   };
-  return <section className="bg-background py-0">
+  return <section className="bg-card py-[37px]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">Our Work Gallery</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Our Work Gallery</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             See the exceptional results of our professional cleaning services. 
             From residential homes to commercial spaces, we deliver outstanding quality every time.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {galleryImages.map(image => <div key={image.id} className="group relative overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 cursor-pointer bg-white">
-              <div className="aspect-[4/3] overflow-hidden">
-                <img src={image.src} alt={image.alt} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy" />
-              </div>
-              
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-white font-semibold text-lg mb-2">{image.category}</h3>
-                  <p className="text-white/90 text-sm mb-4">{image.alt}</p>
-                </div>
-                
-                {/* Zoom Icon */}
-                <div className="absolute top-4 right-4">
-                  <div className="bg-primary/90 p-2 rounded-full">
-                    <ZoomIn className="w-5 h-5 text-white" />
-                  </div>
-                </div>
-              </div>
+        <div className="relative">
+          <Button variant="outline" size="icon" className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm" onClick={scrollLeft}>
+            <ChevronLeft className="w-4 h-4" />
+          </Button>
+          
+          <Button variant="outline" size="icon" className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm" onClick={scrollRight}>
+            <ChevronRight className="w-4 h-4" />
+          </Button>
 
-              {/* Click area */}
-              <button onClick={() => openModal(image.src)} className="absolute inset-0 w-full h-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset" aria-label={`View larger image of ${image.category}`} />
-            </div>)}
+          <div ref={scrollRef} className="flex space-x-6 pb-4 overflow-x-auto scrollbar-hide px-12" style={{
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none'
+          }}>
+            {galleryImages.map(image => 
+              <Card key={image.id} className="flex-shrink-0 w-80 border-border hover:border-primary/20 transition-colors cursor-pointer group">
+                <CardContent className="p-0">
+                  <div className="relative overflow-hidden rounded-lg">
+                    <div className="w-full h-60 bg-muted overflow-hidden">
+                      <img 
+                        src={image.src} 
+                        alt={image.alt} 
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" 
+                        loading="lazy" 
+                      />
+                    </div>
+                    
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                        <h3 className="text-white font-semibold text-lg mb-1">{image.category}</h3>
+                        <p className="text-white/90 text-sm">{image.alt}</p>
+                      </div>
+                      
+                      {/* Zoom Icon */}
+                      <div className="absolute top-4 right-4">
+                        <div className="bg-primary/90 p-2 rounded-full">
+                          <ZoomIn className="w-4 h-4 text-white" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Click area */}
+                    <button 
+                      onClick={() => openModal(image.src)} 
+                      className="absolute inset-0 w-full h-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset" 
+                      aria-label={`View larger image of ${image.category}`} 
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </div>
         </div>
 
         {/* Modal */}
